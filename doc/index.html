@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulate test</title>
+    <script text="javascript">
+        function valueChanged(event) {
+            const newVal = event.target.value;
+            let valueTarget = document.getElementById("value");
+            valueTarget.innerHTML = newVal;
+
+            if (newVal > 75) {
+                valueTarget.classList.remove("value-ok");
+                valueTarget.classList.add("value-nok");
+            } else {
+                valueTarget.classList.remove("value-nok");
+                valueTarget.classList.add("value-ok");
+            }
+        }
+    </script>
+
+    <style>
+        .value-ok, .value-nok {
+            font-size: 2em;
+        }
+        
+        .value-ok {
+            color: darkgreen;
+        }
+        
+        .value-nok {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="range" min="1" max="100" value="50" oninput="valueChanged(event)">
+    <div id="value" class="value-ok">50</div>
+</body>
+</html>
